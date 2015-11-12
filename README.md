@@ -12,9 +12,11 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 
 Fetch content from API/JSON/Xml without using any database in PHP. 
 
+
 == Installation ==
 
 run "composer update" in the directory
+
 
 == Version ==
 Current Version 1:0 -- 12/09/2015
