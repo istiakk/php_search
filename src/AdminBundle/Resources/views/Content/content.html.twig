@@ -1,0 +1,121 @@
+{% extends "::base.html.twig" %}
+{#=== Istiak PHP_Search ===
+Contributors: istiak.mah
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=T2J4GWJE5SKQE #}
+{% block title %}Contents{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid main-content">
+
+        <div class="page-title">
+            <h1 style= "text-align: center">
+                {#it can be translate to swedish while showing it to the swedish user#}
+                {% trans %}Istiak's Home !{% endtrans %}
+            </h1>
+        </div></div>
+
+
+    <div><div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form action="/istiak/home" method="post" id="searchform">
+
+                    <div class="form-group" style="padding:0px 0px 0px 20px">
+                        <div class="col-md-10 ">
+                            <input  type="text" id= "contentSearch" name="contentSearch" class="form-control" placeholder="Search For Anything...">
+                        </div></div>
+                    <div class="form-group"><button type="submit" class="btn btn-default" id="submitSearch">
+                            <i class="fa fa-search"></i> Search
+                        </button></div>
+                </form>
+            </div>
+        </div></div>
+    <div class="row" id="displayResult">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div  class = "widget-container fluid height clearfix">
+                <div  class = "widget content padded clearfix">
+                    <!-- Table -->
+                    <table class="table table-striped table-bordered" id="istiak-data-table" style="text-align:center">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            {% for content in products%}
+                                <tr class="">
+                                    <td>
+                                        <div class="form-group"  style="pointer-events:none">
+                                            {% if content is defined %}
+                                                <a id="plusbutton" href="{{ content.name }}">{{ content.name}} </a>
+                                            </div>
+                                        {% else%}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="bs-example" id="alertmsg" style="text-align:center">
+                        <div class="alert alert-warning" >
+                            
+                           <strong><span id="inputData"></span></strong> does not exist !!
+                        </div></div>
+                    <div id="sucumsg" style="text-align:center">
+                        <div class="alert alert-success">
+                            Search Result for <strong><span id="txtData"></span></strong> enjoy!
+                        </div></div>
+
+                    <div class="row social-wrapper">
+                        <div class="col-lg-12">
+                            <div id="social-container"></div>
+                            <div class="row sprinkle-hidden" id="loader">
+                                <div class="col-lg-12">
+                                    <div class="btn btn-lg btn-block btn-default" id="load-more">
+                                        <i class="fa fa-spinner fa fa-spin"></i>{% trans %}Loading content{% endtrans %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div></div></div>
+
+    <script>
+        $(document).ready(function () {
+            $("#loader").hide();
+            $("#alertmsg").hide();
+            $("#sucumsg").hide();
+            $("#istiak-data-table").hide();
+            $("#searchform").on('submit', function (e) {
+                $("#loader").show();
+                var data = {};
+                data['contentSearch'] = $('#contentSearch').val();
+
+                $.ajax({
+                    url: '/istiak/home',
+                    type: 'post',
+                    data: data,
+                    success: function (returnedData) {
+                        $("#displayResult").html($(returnedData).find("#displayResult").html());
+                        var x = document.getElementById("istiak-data-table").rows.length;
+                        $("#loader").hide();
+                        $("#alertmsg").hide();
+                        $("#txtData").html($('#contentSearch').val());
+                        $("#sucumsg").show();
+                        $("#istiak-data-table").show();
+                        {#when the result is null display this#}
+                        if (!x) {
+                            $("#loader").show();
+                            $('#inputData').html($('#contentSearch').val());
+                            $("#alertmsg").show();
+                            $("#sucumsg").hide();
+                            $("#istiak-data-table").hide();
+                        }
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+
+{% endblock %}

@@ -1,6 +1,25 @@
-composer.phar
-vendor/
+# Bootstrap
+app/bootstrap*
 
-# Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
-# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
-# composer.lock
+# Symfony directories
+vendor/*
+*/logs/*
+*/cache/*
+web/uploads/*
+web/bundles/*
+web/css/*
+web/images/*
+web/js/*
+
+# Composer
+composer.phar
+
+# Vagrant
+.vagrant*
+nbproject/*
+
+# Local environment variables
+build/.env
+
+".gitignore" 25L, 262C
+

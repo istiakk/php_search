@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="pris.ext">
+        <body>
+            <trans-unit id="1">
+                <source>We Know The Price</source>
+                <target>Vi Veta Priset</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Your Answer</source>
+                <target>Ditt svar</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
