@@ -1,6 +1,6 @@
 <?php
 //=== Istiak PHP_Search ===
-//Contributors: istiak.mah
+//Contributors: Istiak Mah
 //Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=T2J4GWJE5SKQE
 /*
  * This file is part of the Symfony package.
