@@ -19,5 +19,6 @@ run "composer update" in the directory
 
 
 == Version ==
-Current Version 1:0 -- 12/09/2015
+
+Current Version 1.0 -- 12/09/2015
 
