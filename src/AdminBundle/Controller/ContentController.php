@@ -173,6 +173,10 @@ class ContentController extends Controller {
         );
     }
    
+    
+    
+    
+    
     function my_array_search($array, $string) {      
         $pattern = preg_replace('/\s+/', ' ', preg_quote($string));
         return array_filter($array, function ($value) use($pattern) {
