@@ -153,6 +153,8 @@ class ContentController extends Controller {
         else if (!empty($xml = simplexml_load_file($feed, 'SimpleXMLElement', LIBXML_NOCDATA))) {
             echo 'XML';
         }
+        
+        
         // if it is neither of a JSON or a XML further action need to be take
         // advice will be to send an email
         else {
